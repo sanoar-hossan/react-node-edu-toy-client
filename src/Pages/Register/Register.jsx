@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const Register = () => {
+const {createUser}=useContext(AuthContext)
+
+
     const handleRegister=event=>{
         event.preventDefault()
-        form=event.target;
+        const form=event.target;
+        const name=form.name.value;
+        const email=form.email.value;
+        const password=form.password.value;
+        const photo=form.photo.value;
+createUser(email,password)
+.then(result=>{
+  const user=result.user;
+  console.log(user);
+})
+.catch(error=>{
+  console.log(error);
+})
 
     }
 
@@ -20,19 +36,19 @@ const Register = () => {
                 <label className="label">
                   <span className="label-text">Name</span>
                 </label>
-                <input name='name' type="email" placeholder="Your Name" className="input input-bordered" />
+                <input name='name' type="text" placeholder="Your Name" className="input input-bordered" />
               </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
-                <input name='email' type="email" placeholder=" Your email" className="input input-bordered" />
+                <input name='email' type="email" placeholder=" Your email" className="input input-bordered" required />
               </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input name='password' type="password" placeholder=" Your password" className="input input-bordered" />
+                <input name='password' type="password" placeholder=" Your password" className="input input-bordered" required/>
                 
               </div>
               <div className="form-control">
