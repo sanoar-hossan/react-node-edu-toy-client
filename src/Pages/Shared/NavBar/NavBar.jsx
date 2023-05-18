@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 const NavBar = () => {
     const navItems= <>
     <li><Link to='/'>Home</Link></li>
-    <li><Link to='/'>About</Link></li>
-    <li><Link to='/'>All Toy</Link></li>
-    <li><Link to='/'>My Toy</Link></li>
+    <li><Link to='/alltoys'>All Toys</Link></li>
+    <li><Link to='/mytoys'>My Toys</Link></li>
+    <li><Link to='/blogs'>Blogs</Link></li>
+    <li><Link ><img src="" alt="" /></Link></li>
     </>
     return (
         <div className="navbar bg-base-100 h-28 mb-4">
@@ -31,7 +32,7 @@ const NavBar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <Link to='/'><button className="btn btn-success">Add Toy</button></Link>
+    <Link to='/'><button className="btn btn-success">Add A Toy</button></Link>
   </div>
 </div>
     );
