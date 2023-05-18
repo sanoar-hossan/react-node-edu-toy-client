@@ -1,5 +1,6 @@
 import React from 'react';
 import google from '../../../src/assets/images/google-signin-button.png'
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const handleLogin=event=>{
@@ -28,7 +29,7 @@ const Login = () => {
           </label>
           <input name='password' type="password" placeholder="password" className="input input-bordered" />
           <label className="label">
-            <a href="#" className="label-text-alt link link-hover">Are You New? Register</a>
+            <a href="#" className="label-text-alt link link-hover">Are You New? <Link to='/register'>Register</Link></a>
           </label>
         </div>
         <div className="form-control mt-6">
