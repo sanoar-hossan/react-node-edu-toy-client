@@ -13,10 +13,12 @@ const AuthProvider = ({children}) => {
 
 
 const createUser=(email,password)=>{
+    setloading(true);
     return createUserWithEmailAndPassword(auth, email, password)
 }
 
 const signIn=(email,password)=>{
+    setloading(true)
     return signInWithEmailAndPassword(auth, email, password)
 }
 
@@ -27,6 +29,7 @@ const googleSignin=()=>{
     .then(result=>{
         const user=result.user;
         console.log(user);
+        setuser(user);
     })
     .catch(error=>{
         console.log(error);

@@ -3,11 +3,15 @@ import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import Blog from "../Pages/Blog/Blog";
+import Addtoy from "../Pages/Addtoy/Addtoy";
+import Errorpage from "../Layout/Errorpage";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement:<Errorpage></Errorpage>,
       children:[
         {
             path:'/',
@@ -21,7 +25,16 @@ const router = createBrowserRouter([
           path: 'register',
           element: <Register></Register>,
         },
+        {
+          path: 'blog',
+          element: <Blog></Blog>,
+        },
+        {
+          path: 'addtoy',
+          element: <Addtoy></Addtoy>,
+        },
       ]
+      
     },
   ]);
 
