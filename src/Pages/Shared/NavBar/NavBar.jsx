@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Providers/AuthProvider';
 
 const NavBar = () => {
+  const {user}=useContext(AuthContext);
     const navItems= <>
     <li><Link to='/'>Home</Link></li>
     <li><Link to='/alltoys'>All Toys</Link></li>
     <li><Link to='/mytoys'>My Toys</Link></li>
     <li><Link to='/blog'>Blogs</Link></li>
+    <li>{user? user.email: login}</li>
     <li><Link ><img src="" alt="" /></Link></li>
     </>
     return (

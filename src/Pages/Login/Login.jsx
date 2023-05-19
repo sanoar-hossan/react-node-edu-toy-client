@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import google from '../../../src/assets/images/google-signin-button.png'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
@@ -6,6 +6,9 @@ import { AuthContext } from '../../Providers/AuthProvider';
 const Login = () => {
 
 const {signIn,googleSignin}=useContext(AuthContext);
+const [user,setuser]=useState(null)
+const [error,seterror]=useState('')
+
 
 const handleGoogle=event=>{
   event.preventDefault();
@@ -21,15 +24,19 @@ const handleGoogle=event=>{
         const email=form.email.value;
         const password=form.password.value;
 
+
         signIn(email,password)
         .then(result=>{
           const user=result.user;
           console.log(user);
+          setuser(user)
+          seterror('')
         })
         .catch(error=>{
           console.log(error);
+          seterror(error)
         })
-
+form.reset();
 
         
 
@@ -64,6 +71,9 @@ const handleGoogle=event=>{
 
         <img className='py-4' onClick={handleGoogle} src={google} alt="" />
         </form>
+        {
+          error && error
+        }
       </div>
     </div>
   </div>
