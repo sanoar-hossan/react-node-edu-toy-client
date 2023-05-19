@@ -22,6 +22,11 @@ createUser(email,password)
   console.log(error);
 })
 form.reset();
+
+updateProfilePhoto(photo)
+
+
+
     }
 
     return (

@@ -1,5 +1,5 @@
 import React, { Children, createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
 import app from '../firebase/firebase.config'
 import { GoogleAuthProvider } from "firebase/auth";
 
@@ -36,6 +36,26 @@ const googleSignin=()=>{
     })
 }
 
+//user photo
+const updateProfilePhoto = (newPhotoURL) => {
+    setloading(true);
+  
+    return updateProfile(auth.currentUser, { photoURL: newPhotoURL })
+      .then(() => {
+        // Profile photo updated successfully
+        const updatedUser = { ...user };
+        updatedUser.photoURL = newPhotoURL;
+        setuser(updatedUser);
+        setloading(false);
+      })
+      .catch((error) => {
+        // An error occurred while updating the profile photo
+        console.error('Error updating profile photo:', error);
+        setloading(false);
+      });
+  };
+  
+
 //userstate observe
 useEffect(()=>{
    const unsubscribe= onAuthStateChanged(auth,currentUser => {
@@ -47,12 +67,18 @@ setloading(false)
     }
 },[])
 
+
+
+    
 const authInfo={
     user,
     loading,
     createUser,
     signIn,
     googleSignin,
+    
+    updateProfilePhoto
+    
 }
 
 

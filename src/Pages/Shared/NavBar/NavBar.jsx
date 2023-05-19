@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
 
 const NavBar = () => {
-  const {user}=useContext(AuthContext);
+  const {user,updateProfilePhoto}=useContext(AuthContext);
     const navItems= <>
     <li><Link to='/'>Home</Link></li>
     <li><Link to='/alltoys'>All Toys</Link></li>
     <li><Link to='/mytoys'>My Toys</Link></li>
     <li><Link to='/blog'>Blogs</Link></li>
-    <li>{user? user.email: login}</li>
-    <li><Link ><img src="" alt="" /></Link></li>
+    <li><Link>{user ? <img src={user.photoURL} className='w-11 h-10 rounded hover:bg-red-500'  /> : <Link to='/login'>Login</Link>}</Link></li>
+    <li> { user && user.email}</li>
     </>
     return (
         <div className="navbar bg-base-100 h-28 mb-4">
