@@ -1,5 +1,5 @@
 import React, { Children, createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from '../firebase/firebase.config'
 import { GoogleAuthProvider } from "firebase/auth";
 
@@ -68,7 +68,19 @@ setloading(false)
 },[])
 
 
-
+//logout
+const logOut=()=>{
+    setloading(true);
+    signOut(auth)
+    .then(() => {
+        setuser(null);
+        setloading(false);
+      })
+      .catch((error) => {
+        console.error('Error logging out:', error);
+        setloading(false);
+      });
+}
     
 const authInfo={
     user,
@@ -76,7 +88,7 @@ const authInfo={
     createUser,
     signIn,
     googleSignin,
-    
+    logOut,
     updateProfilePhoto
     
 }
