@@ -18,26 +18,31 @@ const Addtoy = () => {
         const detail = form.detail.value;
 
         const newToy = { picurl, name, sellername, selleremail, subcategory,price, quantity,rating,detail }
-form.reset()
+
         console.log(newToy);
 
-fetch("http://localhost:5000/addtoys",{
-    method: "POST",
-    headers:{'Content-Type':'application/json'},
-    body: JSON.stringify(newToy),
-})
-.then(res=>res.json())
-.then (data=>{
-    console.log(data);
-    if(data.insertedId){
-        Swal.fire({
-            title: 'Success!',
-            text: 'Toy Added Successfully',
-            icon: 'success',
-            confirmButtonText: 'Cool'
-          })
-    }
-})
+        // send data to the server
+       
+
+        fetch("http://localhost:5000/addtoys", {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},     
+            body: JSON.stringify({newToy}),
+           
+            
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Add Toy Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'xoss'
+                  })
+            }
+        });
 
 
     }
