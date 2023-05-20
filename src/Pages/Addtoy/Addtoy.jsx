@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Swal from 'sweetalert2'
 const Addtoy = () => {
 
     const handleAddtoy = event => {
@@ -29,6 +29,14 @@ fetch("http://localhost:5000/addtoys",{
 .then(res=>res.json())
 .then (data=>{
     console.log(data);
+    if(data.insertedId){
+        Swal.fire({
+            title: 'Success!',
+            text: 'Toy Added Successfully',
+            icon: 'success',
+            confirmButtonText: 'Cool'
+          })
+    }
 })
 
 
