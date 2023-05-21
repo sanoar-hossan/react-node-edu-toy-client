@@ -11,13 +11,13 @@ const Addtoy = () => {
         const name = form.name.value;
         const sellername = form.sellername.value;
         const email = form.email.value;
-        const subcategory = form.subcategory.value;
+        const category = form.category.value;
         const price = form.price.value;
         const quantity = form.quantity.value;
         const rating = form.rating.value;
         const detail = form.detail.value;
 
-        const newToy = { picurl, name, sellername, email, subcategory,price, quantity,rating,detail }
+        const newToy = { picurl, name, sellername, email, category,price, quantity,rating,detail }
 
         console.log(newToy);
 
@@ -107,10 +107,10 @@ const Addtoy = () => {
                 <div className=" mb-8">
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Sub-category</span>
+                            <span className="label-text">Category</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="subcategory" placeholder="Sub-category" className="input input-bordered w-full" />
+                            <input type="text" name="category" placeholder="category" className="input input-bordered w-full" />
                         </label>
                     </div>
                     

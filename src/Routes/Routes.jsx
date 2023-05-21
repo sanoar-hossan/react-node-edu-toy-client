@@ -43,6 +43,7 @@ const router = createBrowserRouter([
         {
           path: '/alltoy/:id',
           element: <ToyDetailsPage></ToyDetailsPage>
+          
         },
         
         {

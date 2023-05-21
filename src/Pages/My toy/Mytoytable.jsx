@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Mytoytable = ({singledata,handleDelete}) => {
+const Mytoytable = ({singledata,handleDelete,handleBookingConfirm }) => {
 
 const {price,quantity,detail,name,picurl,_id}=singledata;
 
     return (
         <tr>
             <th>
-                <button onClick={() => handleDelete(_id)} className="btn btn-sm btn-circle">
+                <button onClick={() => handleDelete(_id)} className="btn btn-outline btn-warning">
                     Delete
                 </button>
             </th>
@@ -29,7 +29,9 @@ const {price,quantity,detail,name,picurl,_id}=singledata;
         </td>
         <td>{quantity}</td>
         <td>${price}</td>
-        <td><button className='btn btn-ghost btn-outline'>Update</button></td>
+        <td><button onClick={() => handleBookingConfirm(_id, quantity, detail)} className='btn btn-ghost btn-outline'>
+        Update
+    </button></td>
         
     </tr>
     );

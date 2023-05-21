@@ -12,8 +12,29 @@ useEffect(()=>{
     .then(data=>{
         setmydata(data);
     })
-},[])
-
+},[user])
+//handle update
+const handleBookingConfirm = (id, quantity, detail) => { // Add `quantity` and `detail` parameters
+    fetch(`https://toy-server-lilac.vercel.app/alltoys?email=${user?.email}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({ quantity, detail })
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      if (data.modifiedCount > 0) {
+        // update state
+        const remaining = mydata.filter(singledata => singledata._id !== id);
+        const updated = mydata.find(singledata => singledata._id === id);
+        updated.status = 'confirm';
+        const newdata = [updated, ...remaining];
+        setmydata(newdata);
+      }
+    })
+  }
 
 
 //handle delete
@@ -63,7 +84,7 @@ const handleDelete = id => {
                                 key={singledata._id}
                                 singledata={singledata}
                                 handleDelete={handleDelete}
-                               
+                                handleBookingConfirm={handleBookingConfirm}
                                
                             ></Mytoytable>)
                         }
