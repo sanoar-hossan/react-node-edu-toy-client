@@ -19,9 +19,9 @@ const {_id,sellername,name,price,quantity,subcategory}=toy;
             <td>{price}</td>
             <td>{quantity}</td>
             <td>
-                    <Link>
-                    <button className='btn btn-outline hover:border'>View Details</button>
-                    </Link>
+            <Link to={`/alltoy/${_id}`}>
+  <button className='btn btn-outline hover:border'>View Details</button>
+</Link>
                 </td>
             
         </tr>
