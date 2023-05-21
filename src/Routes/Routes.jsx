@@ -7,6 +7,7 @@ import Blog from "../Pages/Blog/Blog";
 import Addtoy from "../Pages/Addtoy/Addtoy";
 import Errorpage from "../Layout/Errorpage";
 import Alltoy from "../Pages/Alltoy/Alltoy";
+import Mytoy from "../Pages/My toy/Mytoy";
 
 const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
         {
           path: 'alltoy',
           element: <Alltoy></Alltoy>,
+        },
+        {
+          path: 'mytoy',
+          element: <Mytoy></Mytoy>,
         },
       ]
       

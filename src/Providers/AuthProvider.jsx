@@ -37,14 +37,15 @@ const googleSignin=()=>{
 }
 
 //user photo
-const updateProfilePhoto = (newPhotoURL) => {
+const updateProfilePhoto = (newPhotoURL, newUsername) => {
     setloading(true);
   
-    return updateProfile(auth.currentUser, { photoURL: newPhotoURL })
+    return updateProfile(auth.currentUser, { photoURL: newPhotoURL,displayName: newUsername })
       .then(() => {
         // Profile photo updated successfully
         const updatedUser = { ...user };
         updatedUser.photoURL = newPhotoURL;
+        updatedUser.displayName = newUsername;
         setuser(updatedUser);
         setloading(false);
       })

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2'
 const Addtoy = () => {
 
@@ -10,14 +10,14 @@ const Addtoy = () => {
         const picurl = form.picurl.value;
         const name = form.name.value;
         const sellername = form.sellername.value;
-        const selleremail = form.selleremail.value;
+        const email = form.email.value;
         const subcategory = form.subcategory.value;
         const price = form.price.value;
         const quantity = form.quantity.value;
         const rating = form.rating.value;
         const detail = form.detail.value;
 
-        const newToy = { picurl, name, sellername, selleremail, subcategory,price, quantity,rating,detail }
+        const newToy = { picurl, name, sellername, email, subcategory,price, quantity,rating,detail }
 
         console.log(newToy);
 
@@ -27,7 +27,7 @@ const Addtoy = () => {
         fetch("http://localhost:5000/addtoys", {
             method: "POST",
             headers: {'Content-Type': 'application/json'},     
-            body: JSON.stringify({newToy}),
+            body: JSON.stringify(newToy),
            
             
         })
@@ -86,7 +86,7 @@ const Addtoy = () => {
                             <span className="label-text">Seller name </span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="sellername" placeholder="seller name (if available from the logged in user)" className="input input-bordered w-full" required />
+                            <input type="text" name="sellername" placeholder="seller name" className="input input-bordered w-full" required />
                         </label>
                     </div>
                     
@@ -98,7 +98,7 @@ const Addtoy = () => {
                             <span className="label-text">Seller email </span>
                         </label>
                         <label className="input-group">
-                            <input type="email" name="selleremail" placeholder="seller email (info from the logged in user)" className="input input-bordered w-full" required />
+                            <input type="email" name="email" placeholder="seller email " className="input input-bordered w-full" required />
                         </label>
                     </div>
                     

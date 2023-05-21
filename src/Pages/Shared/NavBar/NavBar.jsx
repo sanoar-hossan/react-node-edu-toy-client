@@ -11,11 +11,11 @@ const NavBar = () => {
     const navItems= <>
     <li><Link to='/'>Home</Link></li>
     <li><Link to='/alltoy'>All Toys</Link></li>
-    <li><Link to='/mytoys'>My Toys</Link></li>
+    <li><Link to='/mytoy'>My Toys</Link></li>
     <li><Link to='/blog'>Blogs</Link></li>
     <li>
       <Link >
-        {user && <img src={user.photoURL} className='w-11 h-10 rounded hover:bg-red-500' />}
+        {user && <img title={user.name} src={user.photoURL} className='w-11 h-10 rounded hover:bg-red-500' />}
       </Link>
     </li>
     <li>
