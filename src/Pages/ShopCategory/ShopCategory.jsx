@@ -1,23 +1,37 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../Providers/AuthProvider';
 
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 const ShopCategory = () => {
-//     const {user}=useContext(AuthContext);
-// const [categorys,setcategorys]=useState([])
-// const url=`https://toy-server-lilac.vercel.app/alltoys?category=${user?.category}`;
+   
+const [categorys,setcategorys]=useState([])
+const url=`https://toy-server-lilac.vercel.app/alltoy/engeneertoy`;
 
-// useEffect(()=>{
-//     fetch(url)
-//     .then(res=>res.json())
-//     .then(data=>{
-//         setmydata(data);
-//     })
-// },[])
+useEffect(()=>{
+    fetch(url)
+    .then(res=>res.json())
+    .then(data=>{
+        setcategorys(data);
+        console.log(data);
+    })
+},[])
 
 
     return (
         <div>
-            {/* <h1>shop{categorys.length}</h1> */}
+          <Tabs>
+    <TabList>
+      <Tab>Engeneer Toy</Tab>
+      <Tab>Tit</Tab>
+    </TabList>
+
+    <TabPanel>
+      {/* <h2>categorys.filter(item=>item.category).map(card=>toy)</h2> */}
+    </TabPanel>
+    <TabPanel>
+      <h2>Any content 2</h2>
+    </TabPanel>
+  </Tabs>
         </div>
     );
 };
