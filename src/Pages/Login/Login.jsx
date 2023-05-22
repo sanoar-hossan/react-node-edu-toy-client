@@ -1,19 +1,25 @@
 import React, { useContext, useState } from 'react';
 import google from '../../../src/assets/images/google-signin-button.png'
-import { Link } from 'react-router-dom';
+
 import { AuthContext } from '../../Providers/AuthProvider';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
 
 const {signIn,googleSignin}=useContext(AuthContext);
+const navigate=useNavigate();
+const location=useLocation()
 const [user,setuser]=useState(null)
 const [error,seterror]=useState('')
+
+const form=location.state?.form?.pathname || '/';
 
 
 const handleGoogle=event=>{
   event.preventDefault();
   googleSignin();
-
+  navigate(form,{replace:true})
   
 }
 
@@ -31,6 +37,9 @@ const handleGoogle=event=>{
           console.log(user);
           setuser(user)
           seterror('')
+          form.reset()
+          navigate(form,{replace:true})
+         
         })
         .catch(error=>{
           console.log(error);

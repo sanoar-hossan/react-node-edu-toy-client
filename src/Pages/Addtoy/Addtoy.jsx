@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import Swal from 'sweetalert2'
+import { AuthContext } from '../../Providers/AuthProvider';
 const Addtoy = () => {
-
+const {user}=useContext(AuthContext)
     const handleAddtoy = event => {
         event.preventDefault();
 
@@ -71,7 +72,7 @@ const Addtoy = () => {
                             <span className="label-text">Name</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="name" placeholder="Name" className="input input-bordered w-full" required/>
+                            <input type="text"  name="name" placeholder="Name" className="input input-bordered w-full" required/>
                         </label>
                     </div>
                     
@@ -86,7 +87,7 @@ const Addtoy = () => {
                             <span className="label-text">Seller name </span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="sellername" placeholder="seller name" className="input input-bordered w-full" required />
+                            <input type="text" defaultValue={user?.displayName} name="sellername" placeholder="seller name" className="input input-bordered w-full" required />
                         </label>
                     </div>
                     
@@ -98,7 +99,7 @@ const Addtoy = () => {
                             <span className="label-text">Seller email </span>
                         </label>
                         <label className="input-group">
-                            <input type="email" name="email" placeholder="seller email " className="input input-bordered w-full" required />
+                            <input type="email" defaultValue={user?.email} name="email" placeholder="seller email " className="input input-bordered w-full" required />
                         </label>
                     </div>
                     
