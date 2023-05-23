@@ -32,6 +32,7 @@ const {user}=useContext(AuthContext)
 
   const renderToys = (toys) => {
     return toys.map((toy) => (
+      
       <div key={toy.id} className="bg-white rounded-lg p-4 shadow flex flex-row">
         <div className="flex-shrink-0">
           <img src={toy.picurl} alt={toy.name} className="w-32 h-32 rounded-lg" />

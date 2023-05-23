@@ -13,7 +13,7 @@ const {user}=useContext(AuthContext)
         const sellername = form.sellername.value;
         const email = form.email.value;
         const category = form.category.value;
-        const price = form.price.value;
+        const price = form.parseInt(price).value;
         const quantity = form.quantity.value;
         const rating = form.rating.value;
         const detail = form.detail.value;
@@ -123,7 +123,7 @@ const {user}=useContext(AuthContext)
                             <span className="label-text">Price</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="price" placeholder="Price" className="input input-bordered w-full" />
+                            <input type="number" name="price" placeholder="Price" className="input input-bordered w-full" />
                         </label>
                     </div>
                     

@@ -14,14 +14,19 @@ const Mytoytable = ({ singledata, handleDelete, handleUpdate }) => {
   const handleUpdateClick = (e) => {
     e.preventDefault();
 
-    if (updatedPrice === price && updatedQuantity === quantity && updatedDetail === detail) {
+    if (
+      updatedPrice == price &&
+      updatedQuantity == quantity &&
+      updatedDetail == detail
+    ) {
       // No fields were updated
       return;
     }
 
     const updatedToy = {
       _id,
-      price: updatedPrice,
+      name,
+      price: parseFloat(updatedPrice),
       quantity: updatedQuantity,
       detail: updatedDetail,
     };

@@ -3,6 +3,7 @@ import google from '../../../src/assets/images/google-signin-button.png'
 
 import { AuthContext } from '../../Providers/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useTitle from '../../Hooks/useTitle';
 
 
 const Login = () => {
@@ -12,7 +13,7 @@ const navigate=useNavigate();
 const location=useLocation()
 const [user,setuser]=useState(null)
 const [error,seterror]=useState('')
-
+useTitle('login')
 const form=location.state?.form?.pathname || '/';
 
 
