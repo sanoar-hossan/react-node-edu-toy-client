@@ -6,6 +6,7 @@ import useTitle from '../../Hooks/useTitle';
 const Register = () => {
 const {createUser}=useContext(AuthContext)
 const [user, setUser] = useState(null);
+useTitle('Register')
   const [error, setError] = useState('');
   const [success,setSuccess]=useState('')
 useTitle('register')

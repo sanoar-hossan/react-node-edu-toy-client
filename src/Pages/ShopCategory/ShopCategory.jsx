@@ -4,10 +4,13 @@ import 'react-tabs/style/react-tabs.css';
 import { AuthContext } from '../../Providers/AuthProvider';
 
 import Swal from 'sweetalert2'
+import { Link, useParams } from 'react-router-dom';
 const ShopCategory = () => {
+  
   const [engineerToys, setEngineerToys] = useState([]);
   const [mathToys, setMathToys] = useState([]);
   const [scienceToys, setScienceToys] = useState([]);
+  const{_id}=useParams();
   
 const {user}=useContext(AuthContext)
   useEffect(() => {
@@ -55,6 +58,7 @@ const {user}=useContext(AuthContext)
                 })
                 history.push('/login'); // Replace '/login' with your login page route
               } 
+              else <Link to={`/alltoy/${_id}`}></Link>
             }}
           >
             View Details

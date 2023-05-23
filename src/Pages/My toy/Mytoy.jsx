@@ -3,8 +3,10 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import Mytoytable from './Mytoytable';
 import Swal from 'sweetalert2'
 import { useParams } from 'react-router-dom';
+import useTitle from '../../Hooks/useTitle';
 const Mytoy = () => {
-  const {id}=useParams();
+  const {id,price}=useParams();
+  useTitle('My Toy')
 const {user}=useContext(AuthContext);
 const [sortOrder, setSortOrder] = useState('asc');
 const [mydata,setmydata]=useState([])
@@ -24,7 +26,7 @@ useEffect(() => {
     fetch(`https://toy-server-lilac.vercel.app/alltoys?sortBy=${sortOrder}`)
       .then((res) => res.json())
       .then((data) => {
-        setmydata(data);
+        setSortOrder(data);
       })
       .catch((error) => {
         console.error(error);
@@ -52,6 +54,14 @@ const handleUpdate = (updatedToy) => {
           return singledata;
         });
         setmydata(updatedData);
+        if(data.insertedId){
+          Swal.fire({
+              title: 'Updated!',
+              text: 'Update Toy Successfully',
+              icon: 'success',
+              confirmButtonText: 'ok'
+            })
+      }
       }
     })
     .catch((error) => {
@@ -83,14 +93,7 @@ const handleDelete = id => {
 const handleSortOrderChange = (newSortOrder) => {
   setSortOrder(newSortOrder);
 
-  fetch(`https://toy-server-lilac.vercel.app/alltoys?sortBy=${newSortOrder}`)
-    .then((res) => res.json())
-    .then((data) => {
-      setmydata(data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  
 };
 
 

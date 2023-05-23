@@ -14,13 +14,16 @@ const location=useLocation()
 const [user,setuser]=useState(null)
 const [error,seterror]=useState('')
 useTitle('login')
-const form=location.state?.form?.pathname || '/';
+const from=location.state?.from?.pathname || '/';
+console.log(from);
 
 
 const handleGoogle=event=>{
   event.preventDefault();
-  googleSignin();
-  navigate(form,{replace:true})
+   googleSignin().then(res=>{
+    navigate(from,{replace:true})
+   });
+  
   
 }
 

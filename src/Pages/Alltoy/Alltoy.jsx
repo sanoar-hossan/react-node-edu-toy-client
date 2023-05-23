@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Toytable from './Toytable';
 import { useParams } from 'react-router-dom';
+import useTitle from '../../Hooks/useTitle';
 
 const Alltoy = () => {
   const { searchText } = useParams();
+  useTitle('All Toy')
   const [toys, setToys] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 

@@ -19,7 +19,7 @@ const ToyDetailsPage = () => {
 
     return (
       <div className="card">
-      <img src={picurl} alt={name} className="w-full h-40 object-cover mb-4 rounded-md" />
+      <img src={picurl} alt={name} className="w-90 h-80 object-cover mb-4 rounded-xl" />
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
         <p className="card-text">{detail}</p>

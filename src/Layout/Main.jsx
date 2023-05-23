@@ -7,7 +7,7 @@ const Main = () => {
     return (
         <div>
             <NavBar></NavBar>
-            <Outlet></Outlet>
+            <div className='py-7'><Outlet></Outlet></div>
             <Footer></Footer>
         </div>
     );

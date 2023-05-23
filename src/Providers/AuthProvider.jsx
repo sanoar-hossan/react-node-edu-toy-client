@@ -25,15 +25,8 @@ const signIn=(email,password)=>{
 //google sign in
 const googleSignin=()=>{
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-    .then(result=>{
-        const user=result.user;
-        console.log(user);
-        setuser(user);
-    })
-    .catch(error=>{
-        console.log(error);
-    })
+   return signInWithPopup(auth, provider)
+    
 }
 
 //user photo
