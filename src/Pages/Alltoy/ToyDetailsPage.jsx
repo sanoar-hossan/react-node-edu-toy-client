@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 const ToyDetailsPage = () => {
     const [details,setdetails]=useState([])
-    const {id} = useParams()
+    const {id} = useParams();
     const url=`https://toy-server-lilac.vercel.app/alltoys/${id}`;
     
     const {_id,picurl,price,quantity,detail,name,rating,email}=details;

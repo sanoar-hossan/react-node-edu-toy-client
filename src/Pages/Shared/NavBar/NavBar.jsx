@@ -11,7 +11,7 @@ const NavBar = () => {
     const navItems= <>
     <li><Link to='/'>Home</Link></li>
     <li><Link to='/alltoy'>All Toys</Link></li>
-    <li><Link to='/mytoy'>My Toys</Link></li>
+    
     <li><Link to='/blog'>Blogs</Link></li>
     <li>
       <Link >
@@ -19,7 +19,7 @@ const NavBar = () => {
       </Link>
     </li>
     <li>
-      {user ? <Link><button onClick={handleLogout}>LogOut</button></Link> : <Link to="/login"><button>LogIn</button> </Link>
+      {user ? <><Link to='/mytoy'>My Toys</Link><Link><button onClick={handleLogout}>LogOut</button></Link></> : <> <Link to="/login"><button>LogIn</button> </Link> <Link to='/register'><button>Register</button></Link></>
     }
     </li>
     </>

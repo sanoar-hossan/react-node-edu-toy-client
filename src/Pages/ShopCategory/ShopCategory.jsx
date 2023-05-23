@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import { AuthContext } from '../../Providers/AuthProvider';
 
+import Swal from 'sweetalert2'
 const ShopCategory = () => {
   const [engineerToys, setEngineerToys] = useState([]);
   const [mathToys, setMathToys] = useState([]);
   const [scienceToys, setScienceToys] = useState([]);
-
+  
+const {user}=useContext(AuthContext)
   useEffect(() => {
     fetch('https://toy-server-lilac.vercel.app/alltoy/engeneertoy')
       .then((res) => res.json())
@@ -42,7 +45,13 @@ const ShopCategory = () => {
             onClick={() => {
               if (!user) {
                 // Display notification and redirect to login page
-                alert("You have to log in first to view details");
+               
+                Swal.fire({
+                  title: 'alert!',
+                  text: "You have to log in first to view details",
+                  icon: 'wrong',
+                  confirmButtonText: 'ok'
+                })
                 history.push('/login'); // Replace '/login' with your login page route
               } 
             }}

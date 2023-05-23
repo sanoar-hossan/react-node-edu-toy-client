@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 
 const Register = () => {
-const {createUser,user}=useContext(AuthContext)
-
+const {createUser}=useContext(AuthContext)
+const [user, setUser] = useState(null);
+  const [error, setError] = useState('');
+  const [success,setSuccess]=useState('')
 
     const handleRegister=event=>{
         event.preventDefault()
@@ -13,17 +15,26 @@ const {createUser,user}=useContext(AuthContext)
         const email=form.email.value;
         const password=form.password.value;
         const photo=form.photo.value;
+
+        if (password.length < 6) {
+          setError('password should at least 6 charecter');
+          return;
+        }
+        setError('');
 createUser(email,password)
 .then(result=>{
-  const user=result.user;
-  console.log(user);
+  const loggedUser = result.user;
+        console.log(loggedUser);
+        setUser(loggedUser);
+        setSuccess("User Registration Successfully Please Log In")
+        form.reset();
 })
 .catch(error=>{
   console.log(error);
 })
 form.reset();
 
-updateProfilePhoto(photo)
+
 
 
 
@@ -68,7 +79,7 @@ updateProfilePhoto(photo)
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Register</button>
               </div>
-      
+              {user?<div className='text-success py-3'>{success}</div> : <div className='text-danger py-3'>{error}</div>}
             
               </form>
             </div>
