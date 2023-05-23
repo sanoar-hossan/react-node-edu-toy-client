@@ -6,7 +6,7 @@ Educational Toys Project
 
 This repository contains the client-side code for an educational toys project. The project aims to provide a platform for parents and educators to explore and purchase educational toys for children. The website offers a wide range of interactive and engaging toys designed to enhance learning and development in various subjects.
 
-Live Website: 
+Live Website: https://toy-client-316c8.web.app/
 
 Features
 Toys Catalog: Browse through a diverse collection of educational toys, categorized by subject, age group, and skill level.
